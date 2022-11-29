@@ -1,0 +1,2 @@
+1) Create new documents using mongoose and mongodb
+2) Create new collections using mongoose and mongodb

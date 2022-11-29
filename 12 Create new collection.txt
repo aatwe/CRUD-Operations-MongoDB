@@ -1,0 +1,29 @@
+//Create new collection of people
+
+
+1) //Create schema for new person
+	//name and age
+
+const personSchema = new mongoose.Schema ({
+  name: String,
+  rating: Number,
+});
+
+//Create new model from Schema
+const Person = mongoose.model("Person", personSchema );
+
+//Create new person from model
+const person = new Person ({
+ name: "John",
+ age : 37
+})
+
+//save created person to DB
+
+person.save();
+------------------
+node app.js
+>show collections
+fruits
+people
+db.people.find()	//Find all documents inside people collection

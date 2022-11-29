@@ -1,0 +1,35 @@
+Get MongoDB
+	Cloud: used when deploying database
+	Servers: Windows -> current version
+		Change package zip -> msi
+		Download .msi file
+
+		Complete installation
+		Run service as Network Service User
+		Directory path: where to install mongodb
+		MongoDb Compass //key insights //no need
+	
+C: -> ProgramFiles -> Mongo DB -> Server -> 4.0 -> bin
+						mongo.exe , mongod.exe
+
+Where will mongo DB save databases on local system?
+create below folder
+C: -> data -> DB
+
+
+How to launch mongo.exe and mongod.exe from BASH
+cd ~
+touch .bash_profile
+ls -a
+vim .bash_profile
+//press i key to enter insert mode
+
+
+alias mongod="//paste mongod.exe file path here"
+alias mongo="//paste mongo.exe file path here"
+press Esc
+:wq	//Saves file and exits vim
+
+mongo --version
+//Check mongo DB version
+

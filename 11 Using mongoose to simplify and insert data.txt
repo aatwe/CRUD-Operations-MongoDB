@@ -1,0 +1,46 @@
+// Objective: Simplify Database
+//Delete earlier
+1) show dbs
+2) use fruitsDB
+3) db.dropDatabase()
+
+
+A) //Create Database using Mongoose
+//install mongoose using npm
+>npm i mongoose
+
+B) //Connect to MongoDB
+const  mongoose = require('mongoose');
+mongoose.connect("mongodb://localhost:27017/fruitsDB", {useNewUrlParser: true})	//Where to access MongoDB database Server and then connect to fruitsDB
+							//if not exist, create
+C) //Remove all other code, not needed	
+//Save
+//Run node app.js	//Server started, still same depcricating warning	//pass {useNewUrlParser: true}
+
+D)//Insert Some Data
+	a) Create Schema (Structure of Data)
+	 const fruitSchema = new mongoose.Schema ({
+   		//What structure of fruit document we want?
+		name: String,
+		rating: Number,
+		review: String
+		//Create model of collection and schema
+	b) Model the schema
+	const Fruit = mongoose.model("Fruit", fruitSchema);	//individual fruit documents in collection of fruits "fruit" (mongoose converts fruit to fruits
+`					  		inside database fruitsDB
+	c)Create document from Model
+	const fruit = new Fruit ({
+ 	 name: "Apple",
+	 rating: 7,
+	 review: "Pretty solid as a fruit"	
+})
+	fruit.save();			//fruit document -> in Fruit collection -> in fruitsDB
+}
+); 
+//Save -> node app.js
+show dbs	//fruitsDB created
+use fruitsDB
+show collections
+fruits	//fruit collection -> plural to fruits
+db.fruits.find()
+{"_id" : ObjectId(""), "name": "Apple", "rating": 7, "review": "Pretty solid as a fruit", "__v" : 0}

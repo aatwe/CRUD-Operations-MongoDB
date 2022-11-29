@@ -1,0 +1,45 @@
+ Why we were using Mongoose? validation easier
+no need for assert statements
+we use built in validation checks
+
+
+//Adding validation
+//Why use validators?make dat comply with format
+1) required validator for id etc
+2) min max validator
+	min : checks value >= min value
+	max : checks value <= max value
+
+
+//How to make name field required
+Validation -> required	//make name field 
+
+const fruitSchema = new mongooseSchema ({
+ name: {
+  type: String,
+  required: [true, "Please check your data entry, no name specified"] 
+}
+ rating: {
+		
+  type: Number,	//How to limit rating 1-10
+  		//Docs -> Validation -> Built in Validators 
+  min: 1,
+  max: 10
+},
+ review: String
+});
+
+const Fruit = mongoose.model("Fruit", fruitSchema);
+
+const fruit = new Fruit ({
+ name: "Apple",
+ rating: 34,	//validation error as per schema	//apply wont be added after running app.js
+ review: "Pretty solid as fruit"
+});
+const fruit = new Fruit ({
+		//Please check your data entry, no name specified 
+ rating: 10,	Error after runnign app.js // no name
+  review: "Awesome"
+});
+
+fruit.save();

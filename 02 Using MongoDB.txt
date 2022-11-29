@@ -1,0 +1,29 @@
+Documentation -> mongDB CRUD Operations
+
+first step preform CRUD
+
+1) Hyperterminal
+	>mongod
+	waiting for connections on port 27017
+	//terminal will connect to DB you cant access functions
+	
+   New terminal
+	//tap into mongo shell
+	>mongo
+	>	//Way to interact with mongo DB databases on local system using CLI
+
+	//How to check which DB we have?
+	>help	->//show dbs
+	>show dbs
+		//3 DB
+		admin 0 GB
+		config 0 GB
+		local   0 GB
+	>use shopDB
+	//switched to db shopDB
+	show dbs
+	//Wont show
+	//have to give some data first
+
+	//How to check which DB we are in?
+	>db

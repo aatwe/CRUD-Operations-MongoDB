@@ -1,0 +1,30 @@
+UPDATE
+Fruit.find(function(err, fruits){})
+
+//collection.update
+Fruit.update()
+Fruit.updateMany()
+Fruit.updateOne
+
+//What item to update?What value to update
+Fruit.updateOne({_id: "//Get ID from terminal output"}, {name: "Peach"}, function(err){
+ if(err){
+  console.log(err);
+} else {
+  console.log("Document updated");
+}
+})
+
+//Last one's value will be updated
+
+DELETE 
+What to delete?document peach
+Fruit.deleteOne({name: "Peach"}, function(err){
+  if(err){
+   console.log(err);
+ } 
+  else {
+   console.log("Deleted successfully")
+ }
+})
+//Check back in mongo shell

@@ -1,0 +1,25 @@
+ODM alternative
+ what does odm mongoose do? Allows NodeJS(JS Objects) to speak with MongoDB(doc ,collection and DB)
+
+
+Why use? Simplify validation code
+	Business logic boilerplate	 
+	shorter code
+
+
+const mongoose = require('mongoose');
+mongoose.connect('mongodb://localhost/test');		//new DB test
+
+const Cat = mongoose.model('Cat', {name : String});	//new modle of how data  will be represented
+
+const kitty = new Cat({ name: 'Zildijan'});		//Create new document with new model
+kitty.save().then() =>console.log('meow'));		//Save model in MongoDB database
+
+
+Flashback:
+
+coding was pain in DOM model
+we started adding JQuery
+everything became shorter and easier
+
+Mongoose is like Jquery for mongoDB

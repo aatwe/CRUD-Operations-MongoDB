@@ -1,0 +1,14 @@
+How to update value in database
+
+
+dp.products.updateOne({_id: 1}, {$set: {stock: 32}})	//stock field not present, will create
+
+{"acknowledged" : true, "matchedCount" :1, "modifiedCount": 1}
+db.products.find()
+
+{ "_id:2" , "name" : "Pen", price:1.2, "stock" : 32}
+{ "_id:2" , "name" : "PenCIL", "price" :0.8}
+______________________________________________________________________________________________________
+Update 2nd document with id 2 to have stock fieldwith value 12
+dp.products.updateOne({_id: 2}, {$set: {stock: 12}})
+{"acknowledged" : true, "matchedCount" :1, "modifiedCount": 1}

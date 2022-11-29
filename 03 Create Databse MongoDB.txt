@@ -1,0 +1,46 @@
+1) How to create data in Database?
+
+
+db.collection.insertOne()
+db.collection.insertMany()
+
+
+db.users.insertOne(	//Method
+  {
+    name: "sue",
+    age: 26,	//Document JS object with fields and values (key value pair)
+    status: "pending"
+}
+
+)
+
+What is collection in mongo DB? like table in SQL
+	//collection = collection documents
+document = single data record /1 row
+
+
+1) How to create a collection named products?
+2) How to insert a single document to collection
+db.products.insertOne({_id: 1, name: "Pen", price: 1.20 })		//if products collection does not exist, create one
+
+//O/p
+{"acknowledged" : true, "insertID" :1}
+
+
+3) How to see all collections in DB
+>show collections
+
+3) how to insert many documents in collection?
+  db.colelction.insertMany(
+   [<document 1>, <document 2>, ...]
+   {
+    writeConcern : <document>,
+    orderd: <boolean>
+}
+)
+
+
+
+//Create 2nd product in products collection
+db.products.insertOne(_id:2, name: "Pencil", price:0.80})
+{"acknowledged" : true, "insertID" :2}

@@ -1,0 +1,41 @@
+We have these live items
+How to access the added items in database through app.js
+
+
+1) we created new document and collection in db.
+How to read?
+
+//Model find with callback function
+Fruit.find(function(err, fruits){
+ if(err) {
+  console.log(err);
+} else {
+ console.log(fruits);
+}
+})
+
+
+//Fruits will be logged as living JS objects
+
+{"_id" : ObjectId(""), "name": "Apple", "rating": 7, "review": "Pretty solid as a fruit", "__v" : 0}
+//Everything we have learnt in array and js object applies to our data
+
+
+-----------------------------------------------------------------------------------------------------
+Using for each loop, loop through array of fruits and log just the names
+//Tap into JS arrays and their properties , pass them in function etc
+Fruit.find(function(err, fruits){
+ if(err) {
+  console.log(err);
+} else {
+// console.log(fruits);	//log fruits array entirely
+ //array
+
+mongoose.connection.close();
+
+ fruits.forEach(function(fruit){
+ console.log(fruit.name)
+}
+}
+})
+

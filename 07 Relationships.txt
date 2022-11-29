@@ -1,0 +1,28 @@
+//here we embed 1 document inside another 
+//paste belwow in mongo shell
+case 2: 2 product documents pen and pencil
+both have id
+one has extra field collection of orders ->{orderNumber: 3243, productsOrdered: [1,2]}	//reference to id of products inside array
+
+db.products.insert(
+
+  {
+   _id: 3,
+  name: "Rubber: ",
+  price: 1.30,
+  stock: 43,
+ reviews: [ 	//reviews array
+	{
+ 	authorName: "Sally",
+	rating: 5,
+	review: "Best rubber ever!"
+ }
+	{
+ 	authorName: "John",
+	rating: 5,
+	review: "Awesome ever!"
+ }
+]
+}
+  
+)

@@ -1,0 +1,108 @@
+we used MongoDB with terminal (mongoshell)
+
+We want to use mongo DB with Node JS application
+How to connect Node App to MongoDB 
+
+
+A) Mongo DB native driver
+What driver does? enables MongoDB to interact with out App
+	Different programming lang -> different driver
+docs.,mongodb -> NodeJS -> Quick start -> 
+
+1) Create project
+cd Desktop
+mkdir FruitsProject
+cd FruitsProject
+touch app.js
+npm init -y
+
+2) Install mongo DB driver
+ npm install mongodb --save 
+
+3) start developing application
+App.js -> 
+
+4) mongodb gettins started code
+
+const { MongoClient } = require('mongodb');		//require mongo db package
+// or as an es module:				//assert //validates data entry and connection to mongoDB database
+// import { MongoClient } from 'mongodb'
+
+// Connection URL
+const url = 'mongodb://localhost:27017';		//url for connecting to DB //mongo db port is always 27017	
+const client = new MongoClient(url,{ userNewUrlParser: true});			//New mongo client to connect to DB
+
+// Database Name
+const dbName = 'fruitsDB';				//database name	
+
+async function main() {
+  // Use connect method to connect to the server
+  await client.connect();
+  console.log('Connected successfully to server');		//log if connected successfully to server
+  const db = client.db(dbName);
+  const collection = db.collection('documents');
+
+  // the following code examples can be pasted here...
+
+  return 'done.';
+  insertDocuments(db, function() {		//Call insert documents
+  client.close();				//Close database connection once done inserting documents
+})
+  client.close();
+}
+
+main()
+  .then(console.log)
+  .catch(console.error)
+  .finally(() => client.close());
+
+//connection is made, collection created, documents inserted
+
+5) Run mongo server
+mongod
+
+6) Run app.js code
+node app.js
+//Connected to server
+
+B) ODM Object Document Mapper (mongoose package)	//easy //cuts down code required to work with Mongo DB 
+
+
+7) Add data to database
+//Documents inserted in collection -> fruits -> in database -> fruitsDB
+const insertdocuments = function(db, callback){
+ const collection = db.collection('fruits');
+collection.insertMany([
+ {name: "Apple",
+  score: 8,
+  review: "Great fruit" },
+{name: "Orange",
+  score: 6,
+  review: "Kinda sour"}
+{name: "Banana",
+  score: 9,
+  review: "Great fruit"}
+], function(err,result) {		//Validation
+  assert.equal(err,null);		//validate no errors 
+  assert.equal(3, result.result.n);	//ensure we have 3 results inserted into collection	
+  assert.equal(3, result.result.n);	//Assertion error if you have less items
+  console.log("Inserted 3 documents into collection");
+callback(result);
+}
+} 
+
+
+//Check
+Terminal
+>mongo
+>show dbs
+	admin
+	config
+	fruitsDB
+	local
+	shopDB
+>show collections
+fruits
+//check items
+db.fruits.find()
+//get 5 records, instead of 3 why? //we added2 with nonfatal assertion failiure 

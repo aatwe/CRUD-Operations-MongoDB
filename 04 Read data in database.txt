@@ -1,0 +1,46 @@
+>show collections
+products	//hbere is all data
+
+1) how to read data in database? find()
+//read all documents
+db.products.find()
+_id:2, name: "Pen", price:1.2}
+_id:2, name: "Pencil", price:0.80}
+
+//read particular documents
+_________________________________________
+Query operators: 
+1) Comparison
+$gt $lt $lte $ne $in$gte $eq
+//greaterthan //lessthan ...
+
+2) logical
+$and $not $nor $or
+
+3) element
+$exists $type
+
+4) Evaluation
+$expr
+$jsonSchema
+$mod
+$regex
+$text
+$where 
+_______________________________________
+db.users.find(
+ { age: {$gt : 18} },	<- query criteria//find data in colletion where age>18	//optional
+ { name: 1, address: 1}  <- projection //what fields to return		//optional
+).limit(5)		     <- cursor modifier
+
+//Find products where price is greater than 1
+db.products.find({price {$gt: 1}})
+
+O/p : "_id:2" , "name" : "Pen", price:1.2}
+
+--------------------------------------------
+
+Use of projection?
+when we use find() id comes by default
+db.products.find({_id: 1}, {name:1. _id: 0})
+O/p {"name" :L "pen"}

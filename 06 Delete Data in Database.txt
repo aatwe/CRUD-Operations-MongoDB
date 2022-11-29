@@ -1,0 +1,18 @@
+
+db.collection.deleteOne()
+
+db.collection.deleteMany()
+
+
+
+Ex
+
+db.users.deleteMany(  	//collection
+ { status: "reject"}	 	//delete filter
+)
+
+{ "_id:2" , "name" : "Pen", price:1.2, "stock" : 32}
+{ "_id:2" , "name" : "PenCIL", "price" :0.8}
+db.products.deleteOne({_id: 2})	//filter in our case is just the id
+//1 record deleted
+{'acknowledged" : true, "deltedCount" :1}

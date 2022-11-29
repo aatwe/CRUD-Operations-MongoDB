@@ -1,0 +1,46 @@
+
+ const fruitSchema = new mongoose.Schema ({
+   	//What structure of fruit document we want?
+	name: String,
+	rating: Number,
+	review: String
+	
+});
+
+//Create model of collection and schema
+	const Fruit = mongoose.model("Fruit", fruitSchema);	//individual fruit documents in collection of fruits "fruit" (mongoose converts fruit to fruits
+`					  		inside database fruitsDB
+
+const kiwi = new Fruit ({
+ name: "Kiwi",
+ score: 10,
+ review: "The best Fruit"
+});
+const orange = new Fruit ({
+ name: "Orange",
+ score: 4,
+ review: "Too sour"
+});
+const banana = new Fruit ({
+ name: "Banana",
+ score: 10,
+ review: "Weird texture"
+})
+
+//Save them in bulk		//Mongoose -> API -> Models -> model.insertMany()
+				//Insert an array of documents into a particular model/collection
+Fruit .insertMany([kiwi, orange, banana], function(err){	 //Array of objects matching Schema
+				//Why Callback function? logs errors  if any issues inserting objects into fruits collection
+if(err) {
+ console.log(err);
+} else {
+ console.log("Successfully saved all fruits to fruits DB") 
+}
+ });
+})				//name of model.insertMany	//model -> collection -> schema
+fruits.save()
+____________
+node app.js
+//Successfully saved all fruits to fruits DB
+db.fruits.find()
+//apple kiwi prange banana
